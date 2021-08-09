@@ -1,29 +1,30 @@
-#include<iostream>
-using namespace std;
 
-int main() {
+        #include<iostream>
+        using namespace std;
 
-    char str1[100], str2[100];
-    int i = 0, j = 0;
+        int main() {
 
-    cout << "Enter first string:";
-    cin.getline(str1, 100);
+            char str1[100], str2[100];
+            int i = 0, j = 0;
 
-    cout << "Enter second string:";
-    cin.getline(str2, 100);
+            cout << "Enter a string:";
+            cin.getline(str1, 100);
 
-    while (str1[i] != '\0') {
-        i++;
-    }
+            cout << "Enter A string:";
+            cin.getline(str2, 100);
 
-    while (str2[j] != '\0') {
-        str1[i] = str2[j];
-        j++;
-        i++;
-    }
-    str1[i] = '\0';
+            while (str1[i] != '\0') {
+                i++;
+            }
 
-    cout << "Concatenated string:" << str1;
+            while (str2[j] != '\0') {
+                str1[i] = str2[j];
+                j++;
+                i++;
+            }
+            str1[i] = '\0';
 
-    return 0;
-}
+            cout << "Concatenated string:" << str1;
+
+            return 0;
+        }
