@@ -18,7 +18,7 @@ void clac(int n)
 int main()
 {
     int n;
-    cout<<"Enter a binary number \n";
+    cout<<"Enter a Decimal number \n";
     cin>>n;
     clac(n);
     return 0;
