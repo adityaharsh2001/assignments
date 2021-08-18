@@ -1,5 +1,4 @@
-
-    #include<bits/stdc++.h>
+#include<bits/stdc++.h>
 
     using namespace std;
 
@@ -32,13 +31,27 @@
                     string replace;
                     cout << "Enter the string to replace of same size ";
                     getline(cin, replace);
+                    int len_sub = 0, len_replace = 0;
+                    while(substr[len_sub]!='\0'){
+                        len_sub++;
+                    }
 
+                    while (replace[len_replace]!='\0')
+                    {
+                        len_replace++;
+                    }
+                    if (len_replace==len_sub) {
+                    
                     for (int i = 0; i < replace[i]!='\0'; i++)
                     {
                         str[temp]=replace[i];
                         temp++;
                     }
-                    cout<<"\nNew String="<<str;
+                    cout<<"\nNew String "<<str;
+                    }
+                    else {
+                        cout<<"String to replaced is not of same size";
+                    }
                     break;
                 }
                 else
