@@ -5,7 +5,7 @@
     int s = 100; 
     int head = 0; 
     void push(int x){
-        if(head==s){
+        if(head==s){    
 
             cout<<"OverFlow \n";
         }
