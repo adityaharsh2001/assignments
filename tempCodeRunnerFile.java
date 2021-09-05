@@ -1,2 +1,1 @@
-
-        System.out.println(covert(exp));
+!stack.isEmpty()
