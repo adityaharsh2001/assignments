@@ -1,8 +1,6 @@
 #include <iostream>
 using namespace std;
-
 template <typename T>
-
 class Node
 {
 private:
@@ -10,20 +8,18 @@ private:
     Node<T> *next;
     template <typename U>
     friend class LinkedList;
-
 public:
     Node()
     {
         this->next = NULL;
     }
 };
-
 template <typename T>
 class LinkedList
 {
-
 public:
     Node<T> *head;
+public:
     LinkedList()
     {
         this->head = NULL;
@@ -62,7 +58,6 @@ public:
         head = node;
         cout << "new node added at Begning !\n";
     }
-
     void add(int i, T elem)
     {
         if (i > length() || i < 0)
@@ -90,7 +85,6 @@ public:
             temp = temp->next;
         }
     }
-
     int length()
     {
         int len = 0;
@@ -102,7 +96,6 @@ public:
         }
         return len;
     }
-
     void displayAll()
     {
         if (head == NULL)
@@ -117,7 +110,6 @@ public:
             temp = temp->next;
         }
     }
-
     void remove(int i)
     {
         if (head == NULL)
@@ -151,7 +143,6 @@ public:
             temp = temp->next;
         }
     }
-
     void removeFront()
     {
         if (head == NULL)
@@ -162,18 +153,17 @@ public:
         head = head->next;
         cout << "Begning elem removed\n";
     }
-
-    // void concatenate(Node<int>*list2)
-    // {
-    //     Node<int>* temp = head;
-    //     while(temp->next!= NULL){
-    //         temp  = temp->next;
-    //     }
-    //     temp->next = list2;
-        
-    // }
+    void concatenate(Node<T> *list)
+    {
+        Node<T> *temp = head;
+        Node<T> *temp1 =list;
+        while (temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+        temp->next = temp1;
+    }
 };
-
 int main()
 {
     LinkedList<int> list1, list2;
@@ -229,7 +219,8 @@ int main()
             list2.createNode(elem);
             break;
         case 8:
-            // list1.concatenate(list2.head);
+            list1.concatenate(list2.head);
+            cout<<"Concatenated List\n";
             list1.displayAll();
             break;
         case 9:
