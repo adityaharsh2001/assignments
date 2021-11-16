@@ -1,46 +1,53 @@
 import java.util.Arrays;
-import java.util.Random;
+import java.util.Scanner;
 
-public class QuickSort {
-	public void quickSort(int[] A) {
-		quickSort(A, 0, A.length-1);
+class QuickSort {
+	private static Scanner sc;
+
+	public static void main(String args[]) {
+		sc = new Scanner(System.in);
+
+		System.out.println("Enter no of terms");
+		int n = sc.nextInt();
+
+		System.out.println("Enter the terms");
+		int arr[] = new int[n];
+		for (int i = 0; i < n; i++)
+			arr[i] = sc.nextInt();
+
+		System.out.println("The unsorted array is:");
+		System.out.println(Arrays.toString(arr));
+
+		sort(arr, 0, arr.length - 1);
+
+		System.out.println("The sorted array is:");
+		System.out.println(Arrays.toString(arr));
 	}
-	
-	private void quickSort(int[] A, int low, int high) {
-		if (low < high+1) {
-			int p = partition(A, low, high);
-			quickSort(A, low, p-1);
-			quickSort(A, p+1, high);
+
+	static void sort(int arr[], int start, int end) {
+		if (start < end) {
+			int pIndex = partition(arr, start, end);
+			sort(arr, start, pIndex - 1);
+			sort(arr, pIndex + 1, end);
 		}
 	}
 
-	private void swap(int[] A, int index1, int index2) {
-		int temp = A[index1];
-		A[index1] = A[index2];
-		A[index2] = temp;		
-	}
-	
-	private int getPivot(int low, int high) {
-		Random rand = new Random();
-		return rand.nextInt((high - low) + 1) + low;
-	}
-	private int partition(int[] A, int low, int high) {
-		swap(A, low, getPivot(low, high));
-		int border = low + 1;
-		for (int i = border; i <= high; i++) {
-			if (A[i] < A[low]) {
-				swap(A, i, border++);
+	static int partition(int arr[], int start, int end) {
+		int pivot = arr[end];
+		int pIndex = start;
+		for (int i = start; i < end; i++) {
+			if (arr[i] <= pivot) {
+				swap(arr, i, pIndex);
+				pIndex++;
 			}
 		}
-		swap(A, low, border-1);
-		return border-1;
+		swap(arr, pIndex, end);
+		return pIndex;
 	}
-	
-	public static void main(String[] args) {
-		QuickSort qs = new QuickSort();
-		int[] A = {9, 0, 1, 3, 4, 5, 2, 9, 8, 7, 6, 5, 9, 1, 0, 9};
-		System.out.println(Arrays.toString(A));
-		qs.quickSort(A);
-		System.out.println(Arrays.toString(A));
+
+	static void swap(int arr[], int x, int y) {
+		int temp = arr[x];
+		arr[x] = arr[y];
+		arr[y] = temp;
 	}
 }
